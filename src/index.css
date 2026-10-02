@@ -1,0 +1,93 @@
+/* Design tokens: every colour and font used by the app is named here once.
+   Change a value here and it changes everywhere it is used. */
+:root {
+  --color-bg: #15171a;          /* deep charcoal base */
+  --color-surface: #1f2226;     /* bars, cards, drawers */
+  --color-border: #2e3238;
+  --color-text: #e8e6e1;
+  --color-text-muted: #8b8f96;
+  --color-accent: #c9a45c;      /* restrained gold, used sparingly */
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Top bar: brand on the left, search filling the rest. */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 20px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.search {
+  flex: 1;
+  max-width: 560px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.search:disabled {
+  cursor: not-allowed;
+}
+
+/* The canvas takes all remaining height. */
+.canvas {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-note {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .search {
+    max-width: none;
+  }
+}
